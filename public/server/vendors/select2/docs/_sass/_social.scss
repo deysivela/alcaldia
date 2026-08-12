@@ -1,0 +1,24 @@
+// Social buttons
+//
+// Twitter and GitHub social action buttons.
+  margin-bottom: 20px;
+  text-align: center;
+}
+.s2-docs-social-buttons {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  li {
+    display: inline-block;
+    line-height: 1;
+  }
+  .twitter-follow-button {
+    width: 225px !important;
+  }
+    width: 98px !important;
+  }
+}
+.github-btn {
+  overflow: hidden;
+  border: 0;
+}

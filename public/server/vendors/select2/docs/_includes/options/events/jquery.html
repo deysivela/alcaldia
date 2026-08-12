@@ -1,0 +1,57 @@
+<section>
+  <h2 id="events-public">
+    Public jQuery events
+  </h2>
+    What events will Select2 trigger?
+  </h3>
+  <p>
+  </p>
+  <dl class="s2-docs-panels">
+    <dt>change</dt>
+    <dt>select2:close</dt>
+    <dd>Triggered whenever the dropdown is closed.</dd>
+    <dt>select2:closing</dt>
+    <dt>select2:open</dt>
+    <dd>Triggered whenever the dropdown is opened.</dd>
+    <dd>Triggered before the dropdown is opened. This event can be prevented.</dd>
+    <dt>select2:select</dt>
+    <dt>select2:selecting</dt>
+    <dd>Triggered before a result is selected. This event can be prevented.</dd>
+    <dd>Triggered whenever a selection is removed.</dd>
+    <dt>select2:unselecting</dt>
+  </dl>
+  <h3>
+  </h3>
+  {% include options/not-written.html %}
+    How can I attach listeners for these events?
+  </h3>
+$('select').on('select2:select', function (evt) {
+  // Do something
+});
+  {% include options/not-written.html %}
+  <h3>
+    What events does Select2 listen for?
+  <p>
+    <code>&lt;select&gt;</code> that it is attached to. If you make any
+    external changes that need to be reflected in Select2 (such as changing the
+    value), you should trigger this event.
+{% highlight js linenos %}
+$('select').val('US'); // Select the option with a value of 'US'
+$('select').trigger('change'); // Notify any JS components that the value changed
+{% endhighlight %}
+  <h3>
+  </h3>
+    It's common for other components to be listening to the <code>change</code>
+    event, or for custom event handlers to be attached that may have side
+    effects. Select2 does not have a custom event (like
+    <code>change</code>. You can rely on jQuery's event namespacing to limit
+    the scope to Select2 though by triggering the <code>change.select2</code>
+    event.
+  </p>
+{% highlight js linenos %}
+$('select').val('US'); // Change the value or make some change to the internal state
+{% endhighlight %}
+  <h3>
+    What events can be prevented? How can I prevent a selection from being made?
+  </h3>
+</section>

@@ -1,0 +1,70 @@
+<section>
+    Themes, templating and responsive design
+  </h1>
+  <h2 id="themes">Theme support</h2>
+    Select2 supports custom themes using the
+    so you can style Select2 to match the rest of your application.
+  </p>
+  <p>
+    These are using the <code>classic</code> theme, which matches the old
+    look of Select2.
+  <div class="s2-example">
+    <p>
+      <select class="js-example-theme-single js-states form-control">
+      </select>
+    <p>
+      <select class="js-example-theme-multiple js-states form-control" multiple="multiple"></select>
+    </p>
+  </div>
+{% highlight js linenos %}
+$(".js-example-theme-single").select2({
+  theme: "classic"
+});
+$(".js-example-theme-multiple").select2({
+});
+{% endhighlight %}
+<h2 id="templating">Templating</h2>
+<p>
+  You can access the <code>&lt;option&gt;</code> element
+  (or <code>&lt;optgroup&gt;</code>) and any attributes on those elements
+  using <code>.element</code>.
+</p>
+  Templating is primarily controlled by the
+  and <a href="options.html#templateSelection"><code>templateSelection</code></a>
+  options.
+</p>
+<div class="s2-example">
+  <p>
+    <select class="js-example-templating js-states form-control"></select>
+</div>
+{% highlight js linenos %}
+function formatState (state) {
+  if (!state.id) { return state.text; }
+  var $state = $(
+    '<span><img src="vendor/images/flags/' + state.element.value.toLowerCase() + '.png" class="img-flag" /> ' + state.text + '</span>'
+  return $state;
+};
+$(".js-example-templating").select2({
+  templateResult: formatState
+});
+<h2 id="responsive">Responsive design - Percent width</h2>
+<p>
+  Select2's width can be set to a percentage of its parent to support
+  responsive design. The two Select2 boxes below are styled to 50% and 75%
+  width respectively.
+</p>
+<div class="s2-example">
+  <p>
+  </p>
+  <p>
+    <select class="js-example-responsive js-states" multiple="multiple" style="width: 75%"></select>
+  </p>
+{% highlight html linenos %}
+<select class="js-example-responsive" multiple="multiple" style="width: 75%"></select>
+{% endhighlight %}
+<div class="alert alert-warning">
+  Select2 will do its best to resolve the percent width specified via a
+  css class, but it is not always possible. The best way to ensure that
+  <code>style</code> declaration into the tag.
+</div>
+</section>

@@ -1,0 +1,22 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+/.idea
+/.vscode
+/.vagrant
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.env
+
+# Uploaded documents and images (too large for GitHub)
+/public/server/documentos/**
+!/public/server/documentos/**/.gitkeep
+/public/server/imagenes/**
+!/public/server/imagenes/**/.gitkeep
+
+# Backup files
+*.bak

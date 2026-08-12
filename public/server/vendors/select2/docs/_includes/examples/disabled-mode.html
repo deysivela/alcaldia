@@ -1,0 +1,29 @@
+<section>
+  <p>
+    <code>&lt;select&gt;</code> elements. You can also initialize Select2
+    with <code>disabled: true</code> to get the same effect.
+  </p>
+  <div class="s2-example">
+    <p>
+    </p>
+    <p>
+      <select class="js-example-disabled-multi js-states form-control" multiple="multiple" disabled="disabled"></select>
+    </p>
+      <button type="button" class="js-programmatic-enable btn btn-default">
+        Enable
+      </button>
+      <button type="button" class="js-programmatic-disable btn btn-default">
+        Disable
+      </button>
+    </div>
+  </div>
+  <pre data-fill-from=".js-code-disabled"></pre>
+<script type="text/javascript" class="js-code-disabled">
+$(".js-programmatic-enable").on("click", function () {
+  $(".js-example-disabled").prop("disabled", false);
+});
+  $(".js-example-disabled").prop("disabled", true);
+  $(".js-example-disabled-multi").prop("disabled", true);
+});
+</script>
+</section>

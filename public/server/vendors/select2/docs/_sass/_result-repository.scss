@@ -1,0 +1,43 @@
+// Styles accompanying the "Loading remote data" example `templateResult
+  padding-top: 4px;
+  padding-bottom: 3px;
+  &__avatar {
+    width: 60px;
+    margin-right: 10px;
+    img {
+      width: 100%;
+      border-radius: 2px;
+    }
+  }
+  &__meta {
+    margin-left: 70px;
+  }
+    color: black;
+    font-weight: bold;
+    word-wrap: break-word;
+    margin-bottom: 4px;
+  }
+  &__forks,
+  &__stargazers {
+    margin-right: 1em;
+  }
+  &__forks,
+  &__watchers {
+    display: inline-block;
+    color: #aaa;
+    font-size: 11px;
+  &__description {
+    font-size: 13px;
+    color: #777;
+    margin-top: 4px;
+  }
+  .select2-results__option--highlighted & {
+    &__title {
+    }
+    &__forks,
+    &__stargazers,
+    &__description,
+    &__watchers {
+    }
+  }
+}

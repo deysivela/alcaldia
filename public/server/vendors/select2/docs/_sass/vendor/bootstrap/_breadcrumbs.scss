@@ -1,0 +1,19 @@
+//
+// Breadcrumbs
+// --------------------------------------------------
+  margin-bottom: $line-height-computed;
+  list-style: none;
+  background-color: $breadcrumb-bg;
+  border-radius: $border-radius-base;
+  > li {
+    display: inline-block;
+      // [converter] Workaround for https://github.com/sass/libsass/issues/1115
+      $nbsp: "\00a0";
+      padding: 0 5px;
+      color: $breadcrumb-color;
+    }
+  }
+  > .active {
+    color: $breadcrumb-active-color;
+  }
+}
