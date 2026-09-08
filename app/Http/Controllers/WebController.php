@@ -19,9 +19,21 @@ class WebController extends Controller
    public function index()
    {
       $news = Newpage::orderBy('fecha', 'desc')->orderBy('id', 'desc')->take(4)->get();
-      $novedades = $this->buildNovedades(8);
+      $novedades = $this->buildNovedades(24);
+      $novedadesImagenes = $novedades
+         ->filter(function ($item) {
+            return empty($item['is_pdf']) && !empty($item['is_image']) && !empty($item['preview']);
+         })
+         ->take(8)
+         ->values();
+      $novedadesDocumentos = $novedades
+         ->filter(function ($item) {
+            return !empty($item['is_pdf']);
+         })
+         ->take(8)
+         ->values();
 
-   	return view('client.layouts.content', compact('news', 'novedades'));
+   	return view('client.layouts.content', compact('news', 'novedadesImagenes', 'novedadesDocumentos'));
    }
 
    /**
@@ -101,6 +113,16 @@ class WebController extends Controller
             // La noticia no es un archivo descargable: se muestra la foto y se abre el detalle.
             $media['url'] = route('details', $item);
             $media['open_file'] = false;
+            $media['is_pdf'] = false;
+            if (!empty($item->photo)) {
+               $media['preview'] = asset(ltrim($item->photo, '/'));
+               $media['is_image'] = true;
+            }
+
+            // Sin foto no entra al carrusel de imágenes.
+            if (empty($media['is_image'])) {
+               return;
+            }
 
             $items->push([
                'type' => 'noticia',
@@ -112,7 +134,7 @@ class WebController extends Controller
                'url' => $media['url'],
                'preview' => $media['preview'],
                'is_pdf' => false,
-               'is_image' => $media['is_image'],
+               'is_image' => true,
                'open_file' => false,
                'date' => $displayDate,
                'uploaded_at' => $uploadedAt,
@@ -140,6 +162,12 @@ class WebController extends Controller
             $media = $this->resolveNovedadMedia($item->file, route($meta['route']));
             $text = $this->documentNovedadText($item, $meta['label'], $media['is_pdf']);
 
+            // Imágenes de Cultura / Zoonosis: forzar URL pública de la foto.
+            if (!empty($media['is_image']) && !empty($item->file)) {
+               $media['preview'] = asset(ltrim($item->file, '/'));
+               $media['is_pdf'] = false;
+            }
+
             $items->push([
                'type' => 'documento',
                'label' => $meta['label'],
@@ -147,11 +175,11 @@ class WebController extends Controller
                'title' => $text['title'],
                'description' => $text['description'],
                'code' => $item->cod ?: null,
-               'url' => $media['url'],
+               'url' => $media['is_image'] ? route($meta['route']) : $media['url'],
                'preview' => $media['preview'],
-               'is_pdf' => $media['is_pdf'],
-               'is_image' => $media['is_image'],
-               'open_file' => $media['open_file'],
+               'is_pdf' => !empty($media['is_pdf']),
+               'is_image' => !empty($media['is_image']),
+               'open_file' => !empty($media['is_pdf']) ? $media['open_file'] : false,
                'date' => $displayDate,
                'uploaded_at' => $uploadedAt,
                'is_new' => $uploadedAt->gte(Carbon::now()->subDays($freshDays)),
@@ -170,6 +198,17 @@ class WebController extends Controller
 
             $typeLabel = $item->type ? ('Proyecto · ' . $item->type) : 'Proyecto';
             $media = $this->resolveNovedadMedia($item->photo, route('proyectos'));
+            if (!empty($item->photo) && empty($media['is_pdf'])) {
+               $media['preview'] = asset(ltrim($item->photo, '/'));
+               $media['is_image'] = true;
+               $media['is_pdf'] = false;
+            }
+            // Carrusel de imágenes: solo proyectos con foto.
+            if (empty($media['is_image'])) {
+               return;
+            }
+            $media['url'] = route('proyectos');
+            $media['open_file'] = false;
 
             $items->push([
                'type' => 'proyecto',
@@ -180,20 +219,20 @@ class WebController extends Controller
                'code' => null,
                'url' => $media['url'],
                'preview' => $media['preview'],
-               'is_pdf' => $media['is_pdf'],
-               'is_image' => $media['is_image'],
-               'open_file' => $media['open_file'],
+               'is_pdf' => false,
+               'is_image' => true,
+               'open_file' => false,
                'date' => $uploadedAt,
                'uploaded_at' => $uploadedAt,
                'is_new' => $uploadedAt->gte(Carbon::now()->subDays($freshDays)),
             ]);
          });
 
+      // No truncar aquí: index() separa imágenes y PDFs con su propio límite.
       return $items
          ->sortByDesc(function ($item) {
             return $item['uploaded_at']->timestamp;
          })
-         ->take($limit)
          ->values();
    }
 

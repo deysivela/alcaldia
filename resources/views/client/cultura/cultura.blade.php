@@ -1,9 +1,9 @@
 @extends('client.layouts.index')
-@section('title', 'Secretaría de Culturas | GAM Llallagua')
+@section('title', 'Unidad de Cultura | GAM Llallagua')
 @section('content')
     @include('client.partials.page-banner', [
         'eyebrow' => 'Identidad y tradición',
-        'title' => 'Secretaría de Culturas',
+        'title' => 'Unidad de Cultura',
         'subtitle' => 'Folklore, festividades y patrimonio del municipio de Llallagua',
         'image' => asset('client/images/cultura/cultura.gif'),
         'align' => 'left',
@@ -17,7 +17,7 @@
                 <div class="gam-cultura-intro-copy">
                     <h2 class="gam-heading">Cultura viva del norte potosino</h2>
                     <p class="gam-lead">
-                        La Secretaría de Culturas impulsa la identidad llallagueña a través de festividades,
+                        La Unidad de Cultura impulsa la identidad llallagueña a través de festividades,
                         música folklórica, gastronomía típica y el cuidado del patrimonio local.
                     </p>
                 </div>
@@ -71,7 +71,7 @@
                             <i class="ti-flag-alt" aria-hidden="true"></i>
                             <span>
                                 <strong>Organiza</strong>
-                                <em>Secretaría de Culturas · GAM Llallagua</em>
+                                <em>Unidad de Cultura · GAM Llallagua</em>
                             </span>
                         </li>
                     </ul>
@@ -80,7 +80,7 @@
                         <i class="ti-time" aria-hidden="true"></i>
                         <div>
                             <strong>Programa oficial</strong>
-                            <p>Consulte más abajo los cronogramas y actividades publicadas por la Unidad de Culturas.</p>
+                            <p>Consulte más abajo los cronogramas y actividades publicadas por la Unidad de Cultura.</p>
                         </div>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
         <div class="container">
             <div class="gam-cultura-contact" data-aos="fade-up" data-aos-duration="900">
                 <span class="gam-eyebrow">Atención ciudadana</span>
-                <h2 class="gam-heading" id="contacto-titulo">Unidad de Culturas</h2>
+                <h2 class="gam-heading" id="contacto-titulo">Unidad de Cultura</h2>
                 <p class="gam-lead text-left">
                     Acérquese a la oficina municipal para consultas sobre festividades,
                     actividades culturales y coordinación con fraternidades o instituciones.

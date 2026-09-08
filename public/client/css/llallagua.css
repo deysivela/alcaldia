@@ -1,4 +1,4 @@
-﻿
+
 
 /* --------------------------------------------------------------------------
    1. VARIABLES DE MARCA
@@ -8069,7 +8069,7 @@ html body .text-success-gradiant {
 
 
 /* --------------------------------------------------------------------------
-   NOVEDADES (portada, bajo el slider) — carrusel 2 en 2
+   NOVEDADES (portada, bajo el slider) — imágenes | documentos (autoplay)
    -------------------------------------------------------------------------- */
 .gam-novedades {
   margin-top: -56px;
@@ -8097,6 +8097,49 @@ html body .text-success-gradiant {
   background: linear-gradient(90deg, var(--gam-yellow), var(--gam-green));
 }
 
+.gam-novedades-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.gam-novedades-col {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gam-novedades-col-head {
+  padding: 0 4px 2px;
+}
+
+.gam-novedades-col-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: var(--gam-green-darker);
+  line-height: 1.3;
+}
+
+.gam-novedades-col--docs .gam-novedades-col-title {
+  color: #8a6500;
+}
+
+.gam-novedades-foot {
+  margin: 10px 0 2px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(var(--gam-green-rgb), 0.12);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--gam-text-muted);
+  line-height: 1.4;
+}
+
 .gam-novedades-carousel.owl-carousel {
   position: relative;
 }
@@ -8119,8 +8162,8 @@ html body .text-success-gradiant {
 .gam-novedades-carousel .owl-nav [class*="owl-"] {
   position: absolute;
   top: 0;
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   margin: 0;
   border-radius: 50%;
   background: var(--gam-white) !important;
@@ -8130,17 +8173,17 @@ html body .text-success-gradiant {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 15px;
   pointer-events: auto;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .gam-novedades-carousel .owl-nav .owl-prev {
-  left: -6px;
+  left: -4px;
 }
 
 .gam-novedades-carousel .owl-nav .owl-next {
-  right: -6px;
+  right: -4px;
 }
 
 .gam-novedades-carousel .owl-nav [class*="owl-"]:hover {
@@ -8150,7 +8193,7 @@ html body .text-success-gradiant {
 }
 
 .gam-novedades-carousel .owl-dots {
-  margin-top: 8px !important;
+  margin-top: 6px !important;
   text-align: center;
 }
 
@@ -8203,37 +8246,68 @@ html body .text-success-gradiant {
   border-color: rgba(var(--gam-yellow-rgb), 0.35);
 }
 
+/* Marco fijo: evita que tamaños distintos de imagen desarmen el layout */
 .gam-novedades-media {
   position: relative;
   display: block;
-  aspect-ratio: 1 / 1;
   width: 100%;
+  height: 210px;
+  flex: 0 0 210px;
   background:
     linear-gradient(160deg, var(--gam-green-light), #d9eadb 55%, #f4f7f4);
   overflow: hidden;
 }
 
 .gam-novedades-card.is-pdf .gam-novedades-media {
-  aspect-ratio: 16 / 9;
-  max-height: 132px;
+  height: 168px;
+  flex-basis: 168px;
+  background: linear-gradient(160deg, #fff4d8, #f7f3ea 55%, #eef4ef);
 }
 
 .gam-novedades-media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
   display: block;
   transition: transform 0.35s ease;
 }
 
-.gam-novedades-card:hover .gam-novedades-media img {
+.gam-novedades-media img.gam-novedades-media-photo {
+  object-fit: cover;
+  object-position: center;
+}
+
+.gam-novedades-carousel .owl-item .gam-novedades-media img.gam-novedades-media-photo {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+}
+
+.gam-novedades-card:hover .gam-novedades-media img.gam-novedades-media-photo {
   transform: scale(1.04);
 }
 
 .gam-novedades-media img.gam-novedades-media-pdf {
   object-fit: contain;
-  padding: 10% 28%;
-  background: linear-gradient(160deg, #fff4d8, #f7f3ea 55%, #eef4ef);
+  padding: 18px 28%;
+}
+
+.gam-novedades-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--gam-yellow);
+  color: #2a2200;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .gam-novedades-file-tag {
@@ -8249,35 +8323,18 @@ html body .text-success-gradiant {
   letter-spacing: 0.06em;
 }
 
-.gam-novedades-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: inline-flex;
-  align-items: center;
-  padding: 3px 9px;
-  border-radius: 999px;
-  background: var(--gam-yellow);
-  color: #2a2200;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-}
-
 .gam-novedades-card-body {
   display: flex;
   flex-direction: column;
   gap: 6px;
   padding: 12px 14px 14px;
-  min-height: 96px;
+  min-height: 112px;
 }
 
 .gam-novedades-card.is-pdf .gam-novedades-card-body {
   gap: 8px;
   padding: 14px 16px 16px;
-  min-height: 168px;
+  min-height: 148px;
   background:
     linear-gradient(180deg, rgba(255, 181, 0, 0.06), transparent 42%);
 }
@@ -8333,7 +8390,7 @@ html body .text-success-gradiant {
 .gam-novedades-card.is-pdf .gam-novedades-item-title {
   -webkit-line-clamp: 3;
   line-clamp: 3;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
   line-height: 1.3;
   color: var(--gam-green-darker);
@@ -8352,8 +8409,8 @@ html body .text-success-gradiant {
 }
 
 .gam-novedades-card.is-pdf .gam-novedades-item-desc {
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
   font-size: 13.5px;
   line-height: 1.5;
   color: #3d4640;
@@ -8363,6 +8420,16 @@ html body .text-success-gradiant {
 @media (max-width: 991px) {
   .gam-novedades {
     margin-top: -28px;
+  }
+
+  .gam-novedades-split {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .gam-novedades-media {
+    height: 200px;
+    flex-basis: 200px;
   }
 }
 
@@ -8376,6 +8443,16 @@ html body .text-success-gradiant {
     margin: -14px -12px 12px;
   }
 
+  .gam-novedades-media {
+    height: 180px;
+    flex-basis: 180px;
+  }
+
+  .gam-novedades-card.is-pdf .gam-novedades-media {
+    height: 140px;
+    flex-basis: 140px;
+  }
+
   .gam-novedades-carousel .owl-nav .owl-prev {
     left: -2px;
   }
@@ -8385,7 +8462,7 @@ html body .text-success-gradiant {
   }
 
   .gam-novedades-card-body {
-    min-height: 88px;
+    min-height: 96px;
     padding: 10px 12px 12px;
   }
 }

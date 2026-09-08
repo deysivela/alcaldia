@@ -6,13 +6,11 @@
         [
             'id' => 'central',
             'nombre' => 'Central',
-            'img' => 'sub.jpg',
+            'img' => 'central.jpg',
             'resumen' => 'Sede principal del Gobierno Autónomo Municipal de Llallagua.',
             'contactos' => [
                 ['tipo' => 'direccion', 'etiqueta' => 'Dirección', 'valor' => 'Av. 10 de noviembre S/N'],
                 ['tipo' => 'telefono', 'etiqueta' => 'Oficina central', 'valor' => '(02) 5822728 · (02) 5820158', 'tel' => '+59125822728'],
-                ['tipo' => 'telefono', 'etiqueta' => 'Dir. financiera', 'valor' => '(02) 5820514', 'tel' => '+59125820514'],
-                ['tipo' => 'telefono', 'etiqueta' => 'Dpto. eléctrico', 'valor' => '(02) 5820487', 'tel' => '+59125820487'],
             ],
         ],
         [

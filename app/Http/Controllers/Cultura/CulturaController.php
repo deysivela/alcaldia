@@ -30,7 +30,7 @@ class CulturaController extends Controller
 
     public function store(CulturaStoreRequest $request)
     {
-        $data = $request->except('file');
+        $data = $request->except('file', 'cod', 'statu');
         $data['categorie'] = self::CATEGORIE;
         $data['publish'] = 0;
         $data['date_creation'] = $this->normalizeDate($request->input('date_creation'));
@@ -63,7 +63,7 @@ class CulturaController extends Controller
     {
         $this->ensureCultura($document);
 
-        $data = $request->except('file');
+        $data = $request->except('file', 'cod', 'statu');
         $data['categorie'] = self::CATEGORIE;
         $data['date_creation'] = $this->normalizeDate($request->input('date_creation'));
         $document->update($data);

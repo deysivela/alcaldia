@@ -20,9 +20,7 @@
 		  	<table class="table table-striped table-bordered">
 		  		<thead>
 		  			<tr>
-		  				<th>Código</th>
-		  				<th>Título / Actividad</th>
-		  				<th>Estado</th>
+		  				<th>Título</th>
 		  				<th>Tipo</th>
 		  				<th>Descripción</th>
 		  				<th>Fecha</th>
@@ -30,9 +28,7 @@
 		  		</thead>
 		  		<tbody>
 		  			<tr>
-		  				<td>{{ $document->cod }}</td>
 		  				<td>{{ $document->entity }}</td>
-		  				<td>{{ $document->statu }}</td>
 		  				<td>{{ $isImage ? 'Imagen' : 'PDF' }}</td>
 		  				<td>{{ $document->description }}</td>
 		  				<td>{{ $document->date_creation }}</td>

@@ -119,14 +119,22 @@ class EmployeeController extends Controller
         return redirect()->route('employees.index');
     }
 
-    private function defaultPhotoForSex(?string $sex): string
+    /**
+     * @param  string|null  $sex
+     * @return string
+     */
+    private function defaultPhotoForSex($sex)
     {
         return $sex === 'Femenino'
             ? 'server/imagenes/funcionarios/default-female.png'
             : 'server/imagenes/funcionarios/default-male.png';
     }
 
-    private function isAlcaldeCharge(int|string|null $chargeId): bool
+    /**
+     * @param  int|string|null  $chargeId
+     * @return bool
+     */
+    private function isAlcaldeCharge($chargeId)
     {
         if ($chargeId === null || $chargeId === '') {
             return false;

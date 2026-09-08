@@ -427,32 +427,31 @@
   }
 
   function iniciarNovedadesCarousel() {
-    var $carousel = $('.gam-novedades-carousel');
-    if (!$carousel.length || typeof $.fn.owlCarousel !== 'function') {
+    var $carousels = $('.gam-novedades-carousel');
+    if (!$carousels.length || typeof $.fn.owlCarousel !== 'function') {
       return;
     }
 
-    $carousel.owlCarousel({
-      loop: $carousel.children().length > 2,
-      margin: 12,
-      nav: true,
-      dots: true,
-      autoplay: true,
-      autoplayTimeout: 5000,
-      autoplayHoverPause: true,
-      smartSpeed: 450,
-      navText: [
-        '<i class="ti-angle-left" aria-hidden="true"></i>',
-        '<i class="ti-angle-right" aria-hidden="true"></i>',
-      ],
-      responsive: {
-        0: {
-          items: 1,
-        },
-        768: {
-          items: 2,
-        },
-      },
+    $carousels.each(function () {
+      var $carousel = $(this);
+      var count = $carousel.children().length;
+      var isDocs = $carousel.hasClass('gam-novedades-carousel--docs');
+
+      $carousel.owlCarousel({
+        loop: count > 1,
+        items: 1,
+        margin: 0,
+        nav: count > 1,
+        dots: count > 1,
+        autoplay: count > 1,
+        autoplayTimeout: isDocs ? 5500 : 4500,
+        autoplayHoverPause: true,
+        smartSpeed: 450,
+        navText: [
+          '<i class="ti-angle-left" aria-hidden="true"></i>',
+          '<i class="ti-angle-right" aria-hidden="true"></i>',
+        ],
+      });
     });
   }
 

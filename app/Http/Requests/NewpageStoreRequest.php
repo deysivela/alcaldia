@@ -27,7 +27,7 @@ class NewpageStoreRequest extends FormRequest
             'user_id' => 'required|integer',
             'titulo'  => 'required',
             'contenido' =>'required|max:10000',
-            'photo' => 'required|max:1024|mimes:png,jpg,jpeg',
+            'photo' => 'required|max:5120|mimes:png,jpg,jpeg',
             'fecha' => 'required',
         ];
     }
@@ -40,7 +40,7 @@ class NewpageStoreRequest extends FormRequest
             'contenido.max' => 'Cantidad de caracter permitido 10000',
             'photo.required' => 'La fotografia es obligatorio',
             'photo.mimes' => 'Solo se admite los formatos jpg,jpeg y png',
-            'photo.max' => 'La imagen debe pesar maximo 1MB', 
+            'photo.max' => 'La imagen debe pesar maximo 5MB', 
             'fecha.required' => 'Establesca una fecha',
         ];
     }

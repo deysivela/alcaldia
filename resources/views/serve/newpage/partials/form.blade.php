@@ -41,7 +41,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 		{{ Form::label('photo', 'Fotografia para la Noticia') }}
 		{{ Form::file('photo', ['class'=>'form-control']) }}
-		<small>Formatos Permitidos JPG,PNG MAX 1MB</small><br>
+		<small>Formatos Permitidos JPG,PNG MAX 5MB</small><br>
 		@if ($errors->has('photo'))
             <span class="error" role="alert">
                 <strong>{{ $errors->first('photo') }}</strong>

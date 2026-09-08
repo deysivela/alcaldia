@@ -23,10 +23,8 @@
 		    <table id="datatable-buttons" class="table table-striped table-bordered">
 		      <thead>
 		        <tr>
-		          <th>Código</th>
-		          <th>Título / Actividad</th>
+		          <th>Título</th>
 		          <th>Tipo</th>
-		          <th>Estado</th>
 		          <th>Fecha</th>
 		          <th class="center">Acción</th>
 		        </tr>
@@ -38,10 +36,8 @@
 		        	$tipo = in_array($ext, ['jpg','jpeg','png','gif','webp'], true) ? 'Imagen' : 'PDF';
 		        @endphp
 		        <tr>
-		          <td>{{ $document->cod }}</td>
 		          <td>{{ $document->entity }}</td>
 		          <td>{{ $tipo }}</td>
-      			  <td>{{ $document->statu }}</td>
       			  <td>{{ $document->date_creation }}</td>
 				  <td>
 		          	<ul class="action">

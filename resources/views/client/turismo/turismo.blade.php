@@ -59,7 +59,7 @@
 
     @include('client.partials.page-banner', [
         'eyebrow' => 'Destino norte potosino',
-        'title' => 'Dirección de Turismo',
+        'title' => 'Turismo',
         'subtitle' => 'Sitios, rutas e historia del municipio de Llallagua',
         'image' => asset('client/images/turismo/img1.jpg'),
         'align' => 'left',

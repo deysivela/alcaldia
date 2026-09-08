@@ -271,7 +271,7 @@
             <span class="gam-discover-media gam-discover-media--cultura" aria-hidden="true"></span>
             <span class="gam-discover-body">
                 <span class="gam-discover-eyebrow">Identidad y tradición</span>
-                <h2>Secretaría de Culturas</h2>
+                <h2>Unidad de Cultura</h2>
                 <p>Folklore, festividad de la Virgen de la Asunción y el compromiso de cuidar la identidad llallagueña.</p>
                 <span class="gam-discover-meta">
                     <span>Festividad</span>
@@ -289,7 +289,7 @@
             <span class="gam-discover-media gam-discover-media--turismo" aria-hidden="true"></span>
             <span class="gam-discover-body">
                 <span class="gam-discover-eyebrow">Destino norte potosino</span>
-                <h2>Dirección de Turismo</h2>
+                <h2>Unidad de Turismo</h2>
                 <p>Minería, paisaje y sitios emblemáticos para descubrir Llallagua como destino con historia propia.</p>
                 <span class="gam-discover-meta">
                     <span>Sitios</span>
